@@ -191,7 +191,6 @@ class UploadTestCase(TestCase):
         c.login(username=self.user.username, password='foobar')
         response = c.get("/upload_simple/")
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "a test file")
         self.assertTemplateUsed(response, 'main/upload_old.html')
 
     def test_upload_old_logged_out(self):

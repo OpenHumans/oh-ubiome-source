@@ -29,7 +29,7 @@ class Command(BaseCommand):
                 fname = fname.replace('.bz2', '')
             if fname + '.vcf.metadata.json' not in metadata_files:
                 clean_uploaded_file.delay(ohmember.access_token,
-                                          f['id'])
+                                          f['id'], "{}")
 
     def handle(self, *args, **options):
         open_humans_members = OpenHumansMember.objects.all()
