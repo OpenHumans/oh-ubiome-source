@@ -8,47 +8,27 @@
 
     <form method="post" enctype="multipart/form-data" action="{% url 'complete' %}">
       {% csrf_token %}
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Source</th>
-            <th>Optional Comments</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-        {% for file in files %}
-          <tr>
-            <td>{{ file.name }}</td>
-            <td>{{ file.description }}</td>
-            <td>
-              <select name="{% concatenate "file_source" file.id %}"
-                     id="{% concatenate "file_source" file.id %}">
-                <option value="other">Other</option>
-                <option value="dna_land">DNALand Imputation</option>
-                <option value="full_genomes_corp">Full Genomes Corp.</option>
-                <option value="genes_for_good">Genes for Good</option>
-                <option value="genos_exome">Genos</option>
-                <option value="illumina_uyg">Illumina UYG</option>
-                <option value="twenty_three_and_me">23andMe Exome</option>
-                <option value="veritas_genetics">Veritas Genetics</option>
-              </select>
-            </td>
-            <td><input type="text" class="form-control"
-              name="{% concatenate "file_desc" file.id %}"
-              id="{% concatenate "file_desc" file.id %}"
-              placeholder="Optional Description"></td>
-
-            <td>
-                <input type="file" name="{% concatenate "file" file.id %}"
-                       id="{% concatenate "file" file.id %}">
-            </td>
-          </tr>
-        {% endfor %}
-        </tbody>
-      </table>
+      <div>
+        <h3>Upload your data </h3>
+          {% for file in files %}
+          <div class="form-group">
+            <label for="{% concatenate "taxonomy" file.id %}">Taxonomy</label>
+            <textarea rows="3" class="form-control" id="{% concatenate "taxonomy" file.id %}" placeholder="Copy and Paste from uBiome page"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="{% concatenate "file_desc" file.id %}">Additional Description</label>
+            <input type="text" class="form-control"
+                name="{% concatenate "file_desc" file.id %}"
+                id="{% concatenate "file_desc" file.id %}"
+                placeholder="Optional Description (Sampling date/location etc.)">
+          </div>
+          <div class="form-group">
+            <label for="{% concatenate "file" file.id %}">Sequence File</label>
+            <input type="file" name="{% concatenate "file" file.id %}"
+                 id="{% concatenate "file" file.id %}">
+           </div>
+          {% endfor %}
+        </div>
       <input class="btn btn-primary" type="submit" value="Upload your data">
     </form>
     <p class="lead">

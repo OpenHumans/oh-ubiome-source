@@ -61,7 +61,7 @@ def raise_http_error(url, response, message):
     raise HTTPError(url, response.status_code, message, hdrs=None, fp=None)
 
 
-def upload_file_to_oh(oh_member, filehandle, metadata):
+def upload_file_to_oh(oh_member, filehandle, metadata, taxonomy):
     """
     This demonstrates using the Open Humans "large file" upload process.
     The small file upload process is simpler, but it can time out. This
@@ -99,7 +99,7 @@ def upload_file_to_oh(oh_member, filehandle, metadata):
         raise raise_http_error(complete_url, req2,
                                'Bad response when completing upload.')
     clean_uploaded_file.delay(oh_member.get_access_token(**client_info),
-                              int(req1.json()['id']))
+                              int(req1.json()['id']), taxonomy)
 
 
 def iterate_files_upload(request):
@@ -108,18 +108,18 @@ def iterate_files_upload(request):
     """
     files = FileMetaData.objects.all()
     for file in files:
-        vcf_source = request.POST.get('file_source_{}'.format(file.id))
+        taxonomy = request.POST.get('taxonomy_{}'.format(file.id))
         user_notes = request.POST.get('file_desc_{}'.format(file.id))
         uploaded_file = request.FILES.get('file_{}'.format(file.id))
         if uploaded_file is not None:
             metadata = {'tags': json.loads(file.tags),
                         'description': file.description,
-                        'user_notes': user_notes,
-                        'vcf_source': vcf_source}
+                        'user_notes': user_notes}
             upload_file_to_oh(
                 request.user.openhumansmember,
                 uploaded_file,
-                metadata)
+                metadata,
+                taxonomy)
 
 
 def file_upload_prep_context(oh_member, proj_config):
@@ -276,5 +276,7 @@ def trigger(request):
     if request.method == 'POST':
         token = request.POST.get("access_token")
         file_id = request.POST.get("file_id")
-        clean_uploaded_file.delay(token, int(file_id))
+        taxonomy = request.POST.get('taxonomy')
+        print(taxonomy)
+        clean_uploaded_file.delay(token, int(file_id), taxonomy)
     return redirect('index')
