@@ -39,7 +39,7 @@ def create_tempfile(dfile, suffix):
 
 def verify_ubiome(dfile):
     """
-    Verify that this is a VCF file.
+    Verify that this is a uBiome file.
     """
     base_name = dfile['basename']
     if base_name.endswith('.zip'):
@@ -52,8 +52,7 @@ def verify_ubiome(dfile):
                     'Found a filename that did not end with ".fastq.gz": '
                     '"{}"'.format(filename))
     else:
-        raise ValueError("Input filename doesn't match .vcf, .vcf.gz, "
-                         'or .vcf.bz2')
+        raise ValueError("Input filename doesn't match .zip")
 
 
 def process_file(dfile, access_token, member, metadata, taxonomy):
