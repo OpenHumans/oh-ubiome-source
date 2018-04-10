@@ -40,6 +40,8 @@ class ManagementTestCase(TestCase):
                                    'download_url': 'https://myawslink.com/member-files/direct-sharing-1337/1234/23andme_valid.txt?Signature=nope&Expires=1522390374&AWSAccessKeyId=nope',
                                    'metadata': {'tags': ['bar'], 'description': 'foo'},
                                    'source': 'direct-sharing-1337'}]})
+            m.register_uri("POST",
+                           "https://www.openhumans.org/api/direct-sharing/project/files/delete/?access_token=myaccesstoken")
             call_command('process_files')
 
     @vcr.use_cassette('main/tests/fixtures/import_test_file.yaml',

@@ -1,9 +1,11 @@
-# Upload your Genome/Exome data to *Open Humans*
-If you have had your genome or exome sequenced you can now add this data
-to your Open Humans account too. The only requirement for this is that the Data
-needs to be in `VCF` format (the most common format to store variants). 
+# Upload your uBiome data to *Open Humans*
+*uBiome* is a biotechnology company based in San Francisco that gives individuals
+and organizations access to sequencing technology to sequence their microbiomes
+with a sampling kit and website.
+If you have had your microbiomes sequenced via *uBiome* you can now add this data
+to your Open Humans account too.
 
 To get started all you have to do is login into *Open Humans*, authorize this
-integration and upload your new *VCF* data file.  
+integration and upload your *uBiome* data files.  
 
 Some of your questions should be answered in our FAQ.
