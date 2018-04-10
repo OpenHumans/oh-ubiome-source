@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/OpenHumans/oh-vcf-source.svg?branch=master)](https://travis-ci.org/OpenHumans/oh-vcf-source)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/fa1655d27aee549f69f6/test_coverage)](https://codeclimate.com/github/OpenHumans/oh-vcf-source/test_coverage)
-[![Maintainability](https://api.codeclimate.com/v1/badges/fa1655d27aee549f69f6/maintainability)](https://codeclimate.com/github/OpenHumans/oh-vcf-source/maintainability)
+[![Build Status](https://travis-ci.org/OpenHumans/oh-ubiome-source.svg?branch=master)](https://travis-ci.org/OpenHumans/oh-ubiome-source)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e05eafe2fa93e0fe026d/test_coverage)](https://codeclimate.com/github/OpenHumans/oh-ubiome-source/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e05eafe2fa93e0fe026d/maintainability)](https://codeclimate.com/github/OpenHumans/oh-ubiome-source/maintainability)
 
 # The *uBiome* upload project for *Open Humans*
 

@@ -38,44 +38,10 @@ class ParsingTestCase(TestCase):
 
         member = {"project_member_id": "1234"}
         dfile = {'id': 34567,
-                 'basename': 'test.vcf',
+                 'basename': 'srr_test.zip',
                  'created': '2018-03-30T00:09:36.563486Z',
-                 'download_url': 'https://myawslink.com/member-files/direct-sharing-1337/1234/test.vcf?Signature=nope&Expires=1522390374&AWSAccessKeyId=nope',
+                 'download_url': 'https://myawslink.com/member-files/direct-sharing-1337/1234/srr_test.zip?Signature=nope&Expires=1522390374&AWSAccessKeyId=nope',
                  'metadata': {'tags': ['bar'], 'description': 'foo'},
                  'source': 'direct-sharing-1337'}
 
-        process_file(dfile, 'myaccesstoken', member, dfile['metadata'])
-
-    @vcr.use_cassette('main/tests/fixtures/process_file_bz2.yaml',
-                      record_mode='none')
-    def test_process_file_bz2(self):
-        """
-        test process_file celery task
-        """
-
-        member = {"project_member_id": "1234"}
-        dfile = {'id': 34567,
-                 'basename': 'test.vcf.bz2',
-                 'created': '2018-03-30T00:09:36.563486Z',
-                 'download_url': 'https://myawslink.com/member-files/direct-sharing-1337/1234/test.vcf.bz2?Signature=nope&Expires=1522390374&AWSAccessKeyId=nope',
-                 'metadata': {'tags': ['bar'], 'description': 'foo'},
-                 'source': 'direct-sharing-1337'}
-
-        process_file(dfile, 'myaccesstoken', member, dfile['metadata'])
-
-    @vcr.use_cassette('main/tests/fixtures/process_file_gz.yaml',
-                      record_mode='none')
-    def test_process_file_gz(self):
-        """
-        test process_file celery task
-        """
-
-        member = {"project_member_id": "1234"}
-        dfile = {'id': 34567,
-                 'basename': 'test.vcf.gz',
-                 'created': '2018-03-30T00:09:36.563486Z',
-                 'download_url': 'https://myawslink.com/member-files/direct-sharing-1337/1234/test.vcf.gz?Signature=nope&Expires=1522390374&AWSAccessKeyId=nope',
-                 'metadata': {'tags': ['bar'], 'description': 'foo'},
-                 'source': 'direct-sharing-1337'}
-
-        process_file(dfile, 'myaccesstoken', member, dfile['metadata'])
+        process_file(dfile, 'myaccesstoken', member, dfile['metadata'], {'foo': 'bar'})

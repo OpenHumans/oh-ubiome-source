@@ -90,7 +90,8 @@ class LoginTestCase(TestCase):
                 fake_file = open('foo')
                 upload_file_to_oh(self.oh_member,
                                   fake_file,
-                                  {'tags': '["foo"]'})
+                                  {'tags': '["foo"]'},
+                                  {'tax': '["onomy"]'})
 
     def test_upload_function_first_fail(self):
         """
@@ -125,7 +126,8 @@ class LoginTestCase(TestCase):
                 fake_file = open('foo')
                 self.assertRaises(HTTPError, upload_file_to_oh,
                                   self.oh_member, fake_file,
-                                  {'tags': '["foo"]'})
+                                  {'tags': '["foo"]'},
+                                  {'tax': '["onomy"]'})
 
     def test_upload_function_second_fail(self):
         """
@@ -160,7 +162,8 @@ class LoginTestCase(TestCase):
                 fake_file = open('foo')
                 self.assertRaises(HTTPError, upload_file_to_oh,
                                   self.oh_member, fake_file,
-                                  {'tags': '["foo"]'})
+                                  {'tags': '["foo"]'},
+                                  {'tax': '["onomy"]'})
 
     def test_upload_function_third_fail(self):
         """
@@ -195,7 +198,8 @@ class LoginTestCase(TestCase):
                 fake_file = open('foo')
                 self.assertRaises(HTTPError, upload_file_to_oh,
                                   self.oh_member, fake_file,
-                                  {'tags': '["foo"]'})
+                                  {'tags': '["foo"]'},
+                                  {'tax': '["onomy"]'})
 
     def test_list_files(self):
         """
