@@ -44,6 +44,7 @@ function putFile(e, taxonomy) {
     response = JSON.parse(xhr.responseText);
     put_xhr.open('PUT', response.url, true);
     put_xhr.setRequestHeader('Content-type','');
+    put_xhr.responseType = 'text';
     put_xhr.send(file);
     put_xhr.onreadystatechange = function(){uploadedFile(put_xhr, taxonomy);};
   } else {
